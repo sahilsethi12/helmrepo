@@ -1,0 +1,20 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: test
+  annotations:
+    'haproxy.router.openshift.io/balance': roundrobin
+    'haproxy.router.openshift.io/disable_cookies': 'true'
+spec:
+  host: {{ .Values.route.host }}
+  path: {{ .Values.route.path }}
+  port:
+    targetPort: test-http
+  to:
+    kind: Service
+    name: test
+    weight: 100
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: None
+  wildcardPolicy: None
