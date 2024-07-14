@@ -1,4 +1,4 @@
 route:
   enabled: true
   host: vmertsbva01.apps.ose-dr.com
-  path: /
+  path: /git
